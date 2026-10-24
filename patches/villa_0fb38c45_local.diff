@@ -1,0 +1,65 @@
+diff --git a/volume-cartographer/scripts/spiral/fit_spiral.py b/volume-cartographer/scripts/spiral/fit_spiral.py
+index 5a0fd4dfb..f25381ef5 100644
+--- a/volume-cartographer/scripts/spiral/fit_spiral.py
++++ b/volume-cartographer/scripts/spiral/fit_spiral.py
+@@ -1105,7 +1105,7 @@ class FitContext:
+         # Patch loading and ROI filtering
+         # ==========================================================================
+ 
+-        filter_tracks_by_shell = bool(self.tracks_dbm_path) and bool(self.shell_path)
++        filter_tracks_by_shell = bool(self.tracks_dbm_path) and bool(self.shell_path) and os.path.isdir(self.shell_path)  # flpipe: shell optional
+         shell_patch = None
+         if self.shell_losses_enabled() or filter_tracks_by_shell:
+             if not self.shell_path:
+@@ -3883,6 +3883,12 @@ class FitContext:
+             loss, losses, log_metrics, shell_metrics = self.step(iteration)
+             progress.update(iteration - self.start_iteration + 1)
+             self.log_step_metrics(iteration, loss, losses, log_metrics, shell_metrics)
++            # flpipe: periodic checkpoint (resume with FIT_SPIRAL_RESUME_PATH/_STEP) so a stalled run loses little
++            ckpt_every = int(os.environ.get('FIT_SPIRAL_CKPT_EVERY', '0'))
++            if (ckpt_every and self.dist.is_main_process and (iteration + 1) % ckpt_every == 0
++                    and iteration + 1 < self.num_training_steps):
++                self._save_model('periodic', iteration + 1)
++                print(f'flpipe: saved checkpoint_periodic.ckpt at {iteration + 1} iterations', flush=True)
+ 
+         # ==========================================================================
+         # Final outputs
+@@ -3989,6 +3995,11 @@ def main(config, *, scroll, paths, progress=None, resume_path=None,
+ 
+ 
+ if __name__ == '__main__':
++    # flpipe: cap PyTorch's caching allocator below the card (e.g. 0.78 of 24 GB) so that on Windows (WDDM) the
++    # allocator frees its cache instead of overflowing into shared system memory, which slows the fit ~25x.
++    if os.environ.get('FIT_SPIRAL_GPU_MEM_FRACTION') and torch.cuda.is_available():
++        torch.cuda.set_per_process_memory_fraction(float(os.environ['FIT_SPIRAL_GPU_MEM_FRACTION']))
++        print('flpipe: CUDA memory fraction', os.environ['FIT_SPIRAL_GPU_MEM_FRACTION'], flush=True)
+     import argparse
+ 
+     from fit_session import (conventional_input_paths, default_user_cache_dir,
+diff --git a/volume-cartographer/scripts/spiral/tracks.py b/volume-cartographer/scripts/spiral/tracks.py
+index b35d4b484..29ebc424b 100644
+--- a/volume-cartographer/scripts/spiral/tracks.py
++++ b/volume-cartographer/scripts/spiral/tracks.py
+@@ -1823,7 +1823,10 @@ def load_track_crossing_cache(path, warn=True, expected_z_range=None):
+                 raise ValueError(
+                     f"unsupported version {metadata.get('version')!r}")
+             expected_signature = [list(item) for item in _tracks_db_signature(path)]
+-            if metadata.get('db_signature') != expected_signature:
++            # flpipe (Windows): compare name + size only; a downloaded DBM keeps its bytes but not its mtime,
++            # and NTFS cannot store the original nanosecond mtime.
++            if ([list(x)[:2] for x in metadata.get('db_signature') or []]
++                    != [x[:2] for x in expected_signature]):
+                 raise ValueError('tracks DBM has changed since the cache was built')
+             if (expected_z_range is not None
+                     and metadata.get('z_range', [None, None])
+@@ -1851,6 +1854,10 @@ def load_track_crossing_cache(path, warn=True, expected_z_range=None):
+ 
+ def _restrict_crossing_partner_csr(csr, source_ids):
+     """Remap a whole-DB crossing graph onto the fit's surviving track rows."""
++    if not isinstance(csr, dict):  # flpipe: a TrackGraph supports csr[name] but not iteration
++        csr = {name: csr[name] for name in (
++            'source_ids', 'offsets', 'partners', 'self_local',
++            'partner_local', 'positions', 'clearances')}
+     _validate_crossing_partner_csr(csr, require_sorted_source_ids=True)
+     source_ids = np.asarray(source_ids, dtype=np.uint64)
+     cached_source_ids = np.asarray(csr['source_ids'], dtype=np.uint64)

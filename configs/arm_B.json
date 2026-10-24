@@ -1,0 +1,4 @@
+{
+  "input_disable_patches": false,
+  "patch_uuid_filter_regex": "^trn_"
+}

@@ -1,0 +1,20 @@
+{
+  "z_begin": 9000,
+  "z_end": 10000,
+  "optimizer_num_training_steps": 20000,
+  "optimizer_random_seed": 1,
+  "loss_weight_shell_outer": 0,
+  "loss_weight_shell_patch_radius": 0,
+  "dense_spacing_mode": "grad_mag",
+  "loss_weight_dense_spacing": 0,
+  "loss_start_track_dt": 10000,
+  "loss_start_patch_dt": 10000,
+  "loss_start_unverified_patch_dt": 10000,
+  "sample_count_tracks_per_step": 24000,
+  "sample_count_track_points_per_step": 64,
+  "sample_count_dense_normal_points": 30000,
+  "sample_count_dense_spacing_pairs": 4000,
+  "sample_count_dense_spacing_density_extra_pairs": 8000,
+  "sample_count_dense_spacing_density_chunk_pairs": 8000,
+  "sample_count_dense_attachment_points": 10000
+}

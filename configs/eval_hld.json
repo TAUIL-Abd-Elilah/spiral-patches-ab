@@ -1,0 +1,5 @@
+{
+  "input_disable_patches": false,
+  "patch_uuid_filter_regex": "^hld_",
+  "loss_weight_dense_normals": 0
+}

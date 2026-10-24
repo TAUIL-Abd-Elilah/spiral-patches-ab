@@ -1,0 +1,12 @@
+{
+    "schema_version": 1,
+    "name": "PHerc0813",
+    "voxel_size_um": 9.362,
+    "spiral_outward_sense": "CW",
+    "normal_zarr_group": "2",
+    "lasagna_scale": 4,
+    "paths": {
+        "tracks_dbm": "tracks/PHerc0813_20250821151723_surface_m7_L0_th0.2_z9000-10000.dbm",
+        "unverified_patches": "unverified_patches"
+    }
+}

@@ -1,0 +1,16 @@
+{
+ "volume": "20250821151723-9.362um-1.2m-113keV-masked.zarr",
+ "sample_id": "PHerc0813",
+ "source": "https://vesuvius-challenge-open-data.s3.us-east-1.amazonaws.com/metadata.json (Last-Modified 2026-10-20 12:31:07 GMT), samples.PHerc0813.volumes.20250821151723.properties",
+ "z_direction_is_top_to_bottom": false,
+ "left_handed_coordinates": false,
+ "spiral_outward_sense": "CW",
+ "rule": "villa main surface_orientation.spiral_outward_sense_for: 'ACW' if z_direction_is_top_to_bottom != left_handed_coordinates else 'CW'",
+ "note": "villa 0fb38c45 spiral-scroll.json accepts no catalog-flag keys (parse_scroll_spec rejects unknown keys), so the sense derived here is written as spiral_outward_sense.",
+ "shape": [
+  16993,
+  7947,
+  7947
+ ],
+ "pixel_size_um": 9.362
+}
