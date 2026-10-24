@@ -4,9 +4,44 @@
 villa's spiral fitter on PHerc. 0813 z 9000-10000: arm A uses the published surface tracks only; arm B adds 13
 machine-grown single-sheet patches. Both arms are scored on 7 other patches that neither fit saw.
 
-**Status (24 October 2026): pre-registered (amendment 1 after the smoke test, before the fits), fits queued, no results yet.** [PREREG.md](PREREG.md) fixes the data,
-the patch split, the settings, the metrics and the decision rule before the first fit. Results, negative or
-positive, will be added here with the same detail.
+**Result (seed 1, 24 October 2026): NO-GO by the pre-registered bar, with a small real gain.** Adding the patches
+put 35.7 % of held-out patch nodes within 2 voxels of a fitted winding, against 32.3 % with tracks only: B-A
+**+3.5 points (95 % CI +0.9 to +5.8)**, better on 6 of the 7 held-out patches, with no more stacking
+(duplicate-sheet share 20.8 % vs 21.3 %). The bar fixed in advance was +5 points, so this does not count as a
+success. On this heavily folded band neither fit is good: about 10.5 % of tracks are satisfied in both arms, and
+each held-out patch touches 3 to 13 different fitted windings. A second seed is queued and will be reported
+whatever it shows; the decision stays with seed 1. [PREREG.md](PREREG.md) (amendment 1, after the smoke test and
+before the fits, relaxed one validity check).
+
+## Results (seed 1)
+
+Both runs are valid under the pre-registration: 1,270,348 tracks loaded, Lasagna normals pool 9,762 bricks, arm A
+no patches, arm B the 13 training patches and none as verified, each eval pass resumed with 0 steps and scored the
+7 held-out patches, eval satisfied tracks within 0.5 % of the fit, shared GPU memory 86 MB. Each 20,000-step fit
+took about an hour on one RTX 3090.
+
+| | A: tracks only | B: tracks + 13 patches | B-A (paired bootstrap over the 7 patches) |
+|---|---|---|---|
+| held-out nodes within 2 voxels (primary) | 32.3 % | 35.7 % | **+3.5 points [+0.9, +5.8]** |
+| held-out nodes within 4 voxels | 57.9 % | 59.3 % | +1.4 points [+0.1, +3.5] |
+| duplicate-sheet share (two windings on one sheet) | 21.3 % | 20.8 % | -0.5 points |
+| winding hops inside held-out patches | 1,088 (6 of 7 patches) | 1,140 (7 of 7) | |
+| fitter's held-out satisfaction (area) | 21.9 % | 24.4 % | +2.5 points |
+| satisfied tracks | 10.5 % | 10.4 % | |
+
+Per held-out patch, nodes within 2 voxels (A → B): s001 365 → 435 of 774, s002 181 → 185 of 448, s010 561 → 553
+of 1,249, s012 217 → 220 of 847, s015 483 → 573 of 1,861, s026 125 → 159 of 624, s043 130 → 158 of 587.
+
+![Cross-section at z = 9700: arm A (orange) and arm B (cyan) windings, held-out patches (magenta)](figures/section_z9700.jpg)
+
+Cross-sections at z = 9500, 9700 and 9900 (`figures/`) show why the numbers are low in both arms: this part of
+PHerc. 0813 is folded, and the fitted windings of both arms cross the sheets in many places. Patches nudge the fit
+near them, but they do not stop the hops.
+
+What this means for using patches on eligible scrolls: machine-grown single-sheet patches did not hurt (unlike our
+August Paris 4 screen, where bulk machine patches lowered held-out fiber consistency), and they helped a little away
+from where they were placed, but on a band this folded they are not enough to fix the fit. The test is small (7
+held-out patches, 2.3 cm2, one seed). `results/score_ab.json`, `results/fitter_summary.json`.
 
 ## Why
 

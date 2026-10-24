@@ -1,0 +1,20 @@
+{
+ "patchA": {
+  "satisfied_tracks": "satisfied_tracks = 133153/1270348 (10.5%)"
+ },
+ "patchA_eval": {
+  "satisfied_tracks": "satisfied_tracks = 133042/1270348 (10.5%)",
+  "unverified_satisfied_patches": "unverified_satisfied_patches = 0/7 (0.0%)",
+  "unverified_satisfied_area": "unverified_satisfied_area = 543200.0/2484800.0 (21.9%)"
+ },
+ "patchB": {
+  "satisfied_tracks": "satisfied_tracks = 132352/1270348 (10.4%)",
+  "unverified_satisfied_patches": "unverified_satisfied_patches = 4/13 (30.8%)",
+  "unverified_satisfied_area": "unverified_satisfied_area = 11220800.0/14860000.0 (75.5%)"
+ },
+ "patchB_eval": {
+  "satisfied_tracks": "satisfied_tracks = 132257/1270348 (10.4%)",
+  "unverified_satisfied_patches": "unverified_satisfied_patches = 0/7 (0.0%)",
+  "unverified_satisfied_area": "unverified_satisfied_area = 607200.0/2484800.0 (24.4%)"
+ }
+}
