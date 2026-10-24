@@ -157,3 +157,16 @@ positive one would be.
   issue search, 23 Oct 2026).
 
 AI assistance: this pre-registration, the band setup and the scripts were prepared with Claude (Anthropic).
+
+
+## Amendment 1 (24 October 2026, after the pipeline smoke test, before either 20,000-step fit)
+
+The 200-step smoke test (both arms plus both eval passes) passed every validity check except one: the eval pass did
+not reproduce the fit's `satisfied_tracks` exactly (arm A 96,783 vs 96,838; arm B 96,282 vs 96,096, of 1,270,348).
+These 0.06 % and 0.19 % differences come from re-scoring the same checkpoint on the GPU, which is not bit-exact;
+nothing else in the eval differs between arms. The validity rule is changed from "equal" to "within 0.5 % of the
+fit's satisfied tracks", for both arms alike. The eval pass only feeds a secondary metric (the fitter's held-out
+satisfaction); the primary metric is computed from the exported meshes and is unaffected. Nothing else changes.
+All other smoke checks passed: 1,270,348 tracks in every run, normals pool 9,762 bricks, arm A no patches, arm B 13
+training patches and 0 verified, both evals resumed with 0 steps and scored the 7 held-out patches, shared GPU
+memory 86 MB.

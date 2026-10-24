@@ -4,7 +4,7 @@
 villa's spiral fitter on PHerc. 0813 z 9000-10000: arm A uses the published surface tracks only; arm B adds 13
 machine-grown single-sheet patches. Both arms are scored on 7 other patches that neither fit saw.
 
-**Status (24 October 2026): pre-registered, fits queued, no results yet.** [PREREG.md](PREREG.md) fixes the data,
+**Status (24 October 2026): pre-registered (amendment 1 after the smoke test, before the fits), fits queued, no results yet.** [PREREG.md](PREREG.md) fixes the data,
 the patch split, the settings, the metrics and the decision rule before the first fit. Results, negative or
 positive, will be added here with the same detail.
 

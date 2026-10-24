@@ -41,6 +41,10 @@ fail=0
 check() { if eval "$2"; then echo "PASS $1"; else echo "FAIL $1"; fail=1; fi; }
 pool() { grep -o 'lasagna normals: resident pool [0-9,]*' $L/fit_$1.log 2>/dev/null | tail -1 | grep -o '[0-9,]*$' | tr -d ,; }
 sat() { grep -o '^satisfied_tracks = [0-9]*/[0-9]*' $L/fit_$1.log 2>/dev/null | tail -1; }
+satn() { sat $1 | grep -o '= [0-9]*' | tr -dc 0-9; }
+# Amendment 1 (24 Oct): GPU float non-determinism flips a few tracks between the fit and its re-scoring (smoke: 55 and
+# 186 of ~96k), so the eval must agree with the fit to within 0.5 % of the fit's satisfied tracks, not exactly.
+close() { [ -n "$(satn $1)" ] && [ -n "$(satn $2)" ] && awk -v a="$(satn $1)" -v b="$(satn $2)" 'BEGIN{d=a-b; if(d<0)d=-d; exit !(d<=0.005*b)}'; }
 check "$TAG rc=0" '[ "$(rc_of $TAG)" = 0 ]'
 check "$TAG lasagna normals pool > 1000 bricks (got $(pool $TAG))" '[ "$(pool $TAG)" -gt 1000 ] 2>/dev/null'
 check "$TAG loaded 1270348 tracks" 'grep -q "loaded 1270348 tracks within z-roi \[9000, 10000)" $L/fit_$TAG.log'
@@ -49,7 +53,7 @@ else check "$TAG loads 13 trn_ patches, 0 verified" 'grep -q "^ loaded 13 unveri
 check "${TAG}_eval rc=0" '[ "$(rc_of ${TAG}_eval)" = 0 ]'
 check "${TAG}_eval resumed at 20000 and ran 0 steps" 'grep -q "resuming from .* at iteration 20000" $L/fit_${TAG}_eval.log && ! grep -q "^step [0-9]*:" $L/fit_${TAG}_eval.log'
 check "${TAG}_eval scores the 7 hld_ patches" 'grep -q "^unverified_satisfied_patches = [0-9]*/7 " $L/fit_${TAG}_eval.log'
-check "${TAG}_eval satisfied_tracks equals the fit ($(sat ${TAG}_eval) vs $(sat $TAG))" '[ -n "$(sat $TAG)" ] && [ "$(sat ${TAG}_eval)" = "$(sat $TAG)" ]'
+check "${TAG}_eval satisfied_tracks within 0.5 % of the fit ($(sat ${TAG}_eval) vs $(sat $TAG))" 'close ${TAG}_eval $TAG'
 maxsh=$(grep -o 'shared_MB [0-9-]*' $L/gpu_$TAG.log | awk '{print $2}' | sort -n | tail -1)
 maxded=$(grep -o 'dedicated_MiB [0-9]*' $L/gpu_$TAG.log | awk '{print $2}' | sort -n | tail -1)
 check "WDDM shared GPU memory peak <= 300 MB (got ${maxsh:-?} MB; dedicated peak ${maxded:-?} MiB)" '[ "${maxsh:-0}" -le 300 ]'

@@ -11,7 +11,8 @@ param([ValidateSet('A', 'B')][string]$Arm, [ValidateSet('train', 'eval')][string
       [string]$Tag, [double]$MemFraction = 0.78, [int]$CkptEvery = 2000, [string]$ResumePath = '', [string]$Set = '',
       [switch]$DryRun)
 $ErrorActionPreference = 'Stop'
-$ROOT = 'C:/VesuviusTemp/band0813'
+# Real path, not the C: junction: wandb's code-path inference fails when cwd and the git root sit on different drives.
+$ROOT = 'D:/PrizeTemp/band0813'
 $DS = "$ROOT/dataset"
 $SPIRAL = "$ROOT/villa_0fb/volume-cartographer/scripts/spiral"
 $PY = 'C:/Users/PC/miniconda3/envs/vesuvius/python.exe'
