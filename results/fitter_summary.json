@@ -16,5 +16,23 @@
   "satisfied_tracks": "satisfied_tracks = 132257/1270348 (10.4%)",
   "unverified_satisfied_patches": "unverified_satisfied_patches = 0/7 (0.0%)",
   "unverified_satisfied_area": "unverified_satisfied_area = 607200.0/2484800.0 (24.4%)"
+ },
+ "patchA_s2": {
+  "satisfied_tracks": "satisfied_tracks = 133518/1270348 (10.5%)"
+ },
+ "patchA_s2_eval": {
+  "satisfied_tracks": "satisfied_tracks = 133504/1270348 (10.5%)",
+  "unverified_satisfied_patches": "unverified_satisfied_patches = 0/7 (0.0%)",
+  "unverified_satisfied_area": "unverified_satisfied_area = 473200.0/2484800.0 (19.0%)"
+ },
+ "patchB_s2": {
+  "satisfied_tracks": "satisfied_tracks = 132696/1270348 (10.4%)",
+  "unverified_satisfied_patches": "unverified_satisfied_patches = 5/13 (38.5%)",
+  "unverified_satisfied_area": "unverified_satisfied_area = 10017600.0/14860000.0 (67.4%)"
+ },
+ "patchB_s2_eval": {
+  "satisfied_tracks": "satisfied_tracks = 132713/1270348 (10.4%)",
+  "unverified_satisfied_patches": "unverified_satisfied_patches = 0/7 (0.0%)",
+  "unverified_satisfied_area": "unverified_satisfied_area = 698000.0/2484800.0 (28.1%)"
  }
 }

@@ -9,9 +9,20 @@ put 35.7 % of held-out patch nodes within 2 voxels of a fitted winding, against 
 **+3.5 points (95 % CI +0.9 to +5.8)**, better on 6 of the 7 held-out patches, with no more stacking
 (duplicate-sheet share 20.8 % vs 21.3 %). The bar fixed in advance was +5 points, so this does not count as a
 success. On this heavily folded band neither fit is good: about 10.5 % of tracks are satisfied in both arms, and
-each held-out patch touches 3 to 13 different fitted windings. A second seed is queued and will be reported
-whatever it shows; the decision stays with seed 1. [PREREG.md](PREREG.md) (amendment 1, after the smoke test and
+each held-out patch touches 3 to 13 different fitted windings. The pre-registered second seed gives the same sign and
+size (+3.1 points, 95 % CI -0.3 to +6.2); the decision stays with seed 1. [PREREG.md](PREREG.md) (amendment 1, after the smoke test and
 before the fits, relaxed one validity check).
+
+## Seed 2 (26 October 2026): same sign, same size
+
+The pre-registered second seed (both arms, `optimizer_random_seed` 2, everything else identical; both runs valid)
+repeats seed 1: B-A within 2 voxels **+3.1 points (95 % CI -0.3 to +6.2)**, within 4 voxels +1.8 points
+(-0.8 to +5.1), duplicate-sheet share -0.6 points (21.2 % vs 20.6 %), satisfied tracks 10.5 % vs 10.4 %, the fitter's
+held-out satisfaction 19.0 % vs 28.1 % of held-out patch area. Per held-out patch, nodes within 2 voxels (A → B):
+s001 357 → 429, s002 182 → 182, s010 601 → 588, s012 225 → 212, s015 443 → 557, s026 140 → 131, s043 124 → 172.
+So the small gain is reproducible in sign and size (about +3 points), but it comes mostly from three of the seven
+held-out patches and stays below the +5-point bar. The decision stays with seed 1: NO-GO.
+`results/score_ab_seed2.json`, `results/fitter_summary.json`.
 
 ## Results (seed 1)
 
