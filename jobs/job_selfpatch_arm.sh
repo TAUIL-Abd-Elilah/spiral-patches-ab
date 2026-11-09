@@ -12,8 +12,9 @@ SET=""; [ "$SEED" = 1 ] || SET="optimizer_random_seed=$SEED"
 # Run once: the same job may be both in the GPU queue and in the detached chain (run_selfpatch_chain.sh); the second
 # copy skips if the first holds the lock or already finished.
 LOCK=$L/selfjob_$TAG.lock
-if [ -f $LOCK ] || grep -q "rc=0" $L/fit_${TAG}_eval.done 2>/dev/null; then echo "SKIP $TAG: already running or done"; exit 0; fi
+if [ -f $LOCK ] || grep -q "rc=0" $L/fit_${TAG}_eval.done 2>/dev/null; then echo "SKIP $TAG: already running or done"; [ -f $LOCK ] && exit 0; echo "ARM_OK $TAG (done earlier)"; exit 0; fi
 echo "$(date +%F_%T) $$" > $LOCK
+trap 'rm -f $LOCK' EXIT   # a finished run is recognised by its eval .done (rc=0), not by the lock
 [ -f $L/smoke.ok ] || { echo "no logs/smoke.ok: run job_patches_ab_smoke.sh first (or it failed)"; exit 1; }
 # Data is back on C: since 25 Oct (it sat on D: 23-25 Oct).
 avail_gb() { df -BG --output=avail /c | tail -1 | tr -dc 0-9; }

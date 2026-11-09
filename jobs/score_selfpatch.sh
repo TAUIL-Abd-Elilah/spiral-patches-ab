@@ -5,7 +5,7 @@
 set -eu
 R=C:/VesuviusTemp/band0813; PY=C:/Users/PC/miniconda3/envs/vesuvius/python.exe; S=$1
 sfx=""; [ $S = 1 ] || sfx=_s$S
-m() { d=$(sed -n 2p $R/logs/fit_$1.done | tr -d '\r'); echo "$d/meshes/fitted_$1"; }
+m() { d=$(sed -n 2p $R/logs/fit_$1.done | tr -d '\r' | sed 's#D:/PrizeTemp#C:/VesuviusTemp#'); echo "$d/meshes/fitted_$1"; }
 A=patchA$sfx; SS=selfS$sfx; RR=selfR$sfx
 P="--patches $R/dataset/unverified_patches --prefix hld_ --z0 9000 --z1 10000 --edge 20 --boot 10000 --seed 12345"
 cd $R

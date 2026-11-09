@@ -1,0 +1,359 @@
+{
+ "prefix": "hld_",
+ "patches": [
+  "hld_PHerc0813_t269_s001.tifxyz",
+  "hld_PHerc0813_t269_s002.tifxyz",
+  "hld_PHerc0813_t269_s010.tifxyz",
+  "hld_PHerc0813_t269_s012.tifxyz",
+  "hld_PHerc0813_t269_s015.tifxyz",
+  "hld_PHerc0813_t269_s026.tifxyz",
+  "hld_PHerc0813_t275_s043.tifxyz"
+ ],
+ "z_window": [
+  9020,
+  9980
+ ],
+ "arms": {
+  "A": {
+   "meshes": "C:/VesuviusTemp/band0813/out/2026-10-26_PHerc0813_slice-9000-10000_0-patch_patchA_s2/meshes/fitted_patchA_s2",
+   "windings": 120,
+   "within_2": 0.3242566510172144,
+   "within_4": 0.5849765258215962,
+   "within_2_patch_mean": 0.3268521933961281,
+   "within_4_patch_mean": 0.5924506195501756,
+   "winding_hops_total": 1116,
+   "patches_with_hops": 7,
+   "duplicate_sheet": {
+    "shared_share": 0.21237680932365546,
+    "area_cm2": 1188.245945694851,
+    "windings": 120,
+    "nodes": 1877259,
+    "same_vx": 3.204443494979705,
+    "most_shared": [
+     [
+      "w011_patchA_s2",
+      0.866
+     ],
+     [
+      "w010_patchA_s2",
+      0.839
+     ],
+     [
+      "w012_patchA_s2",
+      0.828
+     ],
+     [
+      "w013_patchA_s2",
+      0.785
+     ],
+     [
+      "w014_patchA_s2",
+      0.729
+     ],
+     [
+      "w015_patchA_s2",
+      0.648
+     ],
+     [
+      "w016_patchA_s2",
+      0.531
+     ],
+     [
+      "w017_patchA_s2",
+      0.459
+     ],
+     [
+      "w018_patchA_s2",
+      0.408
+     ],
+     [
+      "w019_patchA_s2",
+      0.362
+     ]
+    ]
+   },
+   "per_patch": {
+    "hld_PHerc0813_t269_s001.tifxyz": {
+     "nodes": 774,
+     "within_2": 357,
+     "within_4": 592,
+     "winding_hops": 214,
+     "distinct_windings": 7,
+     "modal_winding": 42,
+     "modal_share": 0.5473,
+     "median_dist_matched": 1.5696266598121063,
+     "quads_over_radius_cap": 122436
+    },
+    "hld_PHerc0813_t269_s002.tifxyz": {
+     "nodes": 448,
+     "within_2": 182,
+     "within_4": 322,
+     "winding_hops": 140,
+     "distinct_windings": 11,
+     "modal_winding": 38,
+     "modal_share": 0.3509,
+     "median_dist_matched": 1.7799545921400335,
+     "quads_over_radius_cap": 122436
+    },
+    "hld_PHerc0813_t269_s010.tifxyz": {
+     "nodes": 1249,
+     "within_2": 601,
+     "within_4": 881,
+     "winding_hops": 539,
+     "distinct_windings": 13,
+     "modal_winding": 48,
+     "modal_share": 0.1839,
+     "median_dist_matched": 1.306014976861626,
+     "quads_over_radius_cap": 122436
+    },
+    "hld_PHerc0813_t269_s012.tifxyz": {
+     "nodes": 847,
+     "within_2": 225,
+     "within_4": 445,
+     "winding_hops": 73,
+     "distinct_windings": 10,
+     "modal_winding": 70,
+     "modal_share": 0.1618,
+     "median_dist_matched": 1.9830775035056343,
+     "quads_over_radius_cap": 122436
+    },
+    "hld_PHerc0813_t269_s015.tifxyz": {
+     "nodes": 1861,
+     "within_2": 443,
+     "within_4": 934,
+     "winding_hops": 117,
+     "distinct_windings": 4,
+     "modal_winding": 61,
+     "modal_share": 0.667,
+     "median_dist_matched": 2.0597594215917026,
+     "quads_over_radius_cap": 122436
+    },
+    "hld_PHerc0813_t269_s026.tifxyz": {
+     "nodes": 624,
+     "within_2": 140,
+     "within_4": 296,
+     "winding_hops": 28,
+     "distinct_windings": 3,
+     "modal_winding": 60,
+     "modal_share": 0.4865,
+     "median_dist_matched": 2.084940031948871,
+     "quads_over_radius_cap": 122436
+    },
+    "hld_PHerc0813_t275_s043.tifxyz": {
+     "nodes": 587,
+     "within_2": 124,
+     "within_4": 268,
+     "winding_hops": 5,
+     "distinct_windings": 5,
+     "modal_winding": 64,
+     "modal_share": 0.3358,
+     "median_dist_matched": 2.058769709762954,
+     "quads_over_radius_cap": 122436
+    }
+   },
+   "fit_log": {
+    "satisfied_tracks": {
+     "n": 133518.0,
+     "of": 1270348.0,
+     "share": 0.10510348345492732
+    },
+    "satisfied_track_points": {
+     "n": 24673975.0,
+     "of": 47877707.0,
+     "share": 0.5153541501058102
+    },
+    "normals_pool_bricks": 9762,
+    "tracks_loaded": 1270348,
+    "unverified_patches_loaded": 0
+   }
+  },
+  "B": {
+   "meshes": "C:/VesuviusTemp/band0813/out/2026-11-09_PHerc0813_slice-9000-10000_0-patch_selfS_s2/meshes/fitted_selfS_s2",
+   "windings": 120,
+   "within_2": 0.34960876369327076,
+   "within_4": 0.6014084507042253,
+   "within_2_patch_mean": 0.34286624615849337,
+   "within_4_patch_mean": 0.6051724905876342,
+   "winding_hops_total": 1102,
+   "patches_with_hops": 7,
+   "duplicate_sheet": {
+    "shared_share": 0.210387023708399,
+    "area_cm2": 1193.4287549356395,
+    "windings": 120,
+    "nodes": 1868388,
+    "same_vx": 3.204443494979705,
+    "most_shared": [
+     [
+      "w011_selfS_s2",
+      0.86
+     ],
+     [
+      "w010_selfS_s2",
+      0.837
+     ],
+     [
+      "w012_selfS_s2",
+      0.823
+     ],
+     [
+      "w013_selfS_s2",
+      0.784
+     ],
+     [
+      "w014_selfS_s2",
+      0.725
+     ],
+     [
+      "w015_selfS_s2",
+      0.636
+     ],
+     [
+      "w016_selfS_s2",
+      0.529
+     ],
+     [
+      "w017_selfS_s2",
+      0.444
+     ],
+     [
+      "w018_selfS_s2",
+      0.394
+     ],
+     [
+      "w019_selfS_s2",
+      0.347
+     ]
+    ]
+   },
+   "per_patch": {
+    "hld_PHerc0813_t269_s001.tifxyz": {
+     "nodes": 774,
+     "within_2": 405,
+     "within_4": 624,
+     "winding_hops": 204,
+     "distinct_windings": 7,
+     "modal_winding": 42,
+     "modal_share": 0.5561,
+     "median_dist_matched": 1.4454311730209142,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s002.tifxyz": {
+     "nodes": 448,
+     "within_2": 167,
+     "within_4": 302,
+     "winding_hops": 130,
+     "distinct_windings": 8,
+     "modal_winding": 38,
+     "modal_share": 0.3477,
+     "median_dist_matched": 1.8324343164354413,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s010.tifxyz": {
+     "nodes": 1249,
+     "within_2": 611,
+     "within_4": 890,
+     "winding_hops": 569,
+     "distinct_windings": 13,
+     "modal_winding": 48,
+     "modal_share": 0.2022,
+     "median_dist_matched": 1.3362732953732532,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s012.tifxyz": {
+     "nodes": 847,
+     "within_2": 221,
+     "within_4": 425,
+     "winding_hops": 85,
+     "distinct_windings": 11,
+     "modal_winding": 63,
+     "modal_share": 0.1294,
+     "median_dist_matched": 1.8507971360075244,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s015.tifxyz": {
+     "nodes": 1861,
+     "within_2": 556,
+     "within_4": 995,
+     "winding_hops": 72,
+     "distinct_windings": 4,
+     "modal_winding": 60,
+     "modal_share": 0.8302,
+     "median_dist_matched": 1.7264469088905676,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s026.tifxyz": {
+     "nodes": 624,
+     "within_2": 115,
+     "within_4": 269,
+     "winding_hops": 24,
+     "distinct_windings": 4,
+     "modal_winding": 59,
+     "modal_share": 0.5762,
+     "median_dist_matched": 2.3778587286413333,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t275_s043.tifxyz": {
+     "nodes": 587,
+     "within_2": 159,
+     "within_4": 338,
+     "winding_hops": 18,
+     "distinct_windings": 6,
+     "modal_winding": 64,
+     "modal_share": 0.2604,
+     "median_dist_matched": 2.0770769394799333,
+     "quads_over_radius_cap": 123479
+    }
+   },
+   "fit_log": {
+    "satisfied_tracks": {
+     "n": 134495.0,
+     "of": 1270348.0,
+     "share": 0.10587256405331452
+    },
+    "satisfied_track_points": {
+     "n": 24728613.0,
+     "of": 47877707.0,
+     "share": 0.5164953492864643
+    },
+    "unverified_satisfied_patches": {
+     "n": 0.0,
+     "of": 46.0,
+     "share": 0.0
+    },
+    "unverified_satisfied_area": {
+     "n": 886800.0,
+     "of": 4756400.0,
+     "share": 0.1864435287191994
+    },
+    "normals_pool_bricks": 9762,
+    "tracks_loaded": 1270348,
+    "unverified_patches_loaded": 46
+   }
+  }
+ },
+ "B_minus_A": {
+  "within_2": {
+   "point": 0.02535211267605636,
+   "ci95": [
+    -0.008673026886383328,
+    0.05049322855709748
+   ],
+   "boot": 10000,
+   "seed": 12345,
+   "patches": 7
+  },
+  "within_4": {
+   "point": 0.016431924882629123,
+   "ci95": [
+    -0.015431427950445609,
+    0.04681784930504751
+   ],
+   "boot": 10000,
+   "seed": 12345,
+   "patches": 7
+  },
+  "duplicate_sheet_share_B_minus_A": -0.001989785615256451,
+  "GO": false,
+  "go_rule": "B-A within_2 >= +3 points, its 95% CI above 0, and duplicate-sheet share B-A <= +2 points"
+ }
+}

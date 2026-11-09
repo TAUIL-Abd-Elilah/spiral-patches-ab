@@ -1,0 +1,319 @@
+{
+ "prefix": "hld_",
+ "patches": [
+  "hld_PHerc0813_t269_s001.tifxyz",
+  "hld_PHerc0813_t269_s002.tifxyz",
+  "hld_PHerc0813_t269_s010.tifxyz",
+  "hld_PHerc0813_t269_s012.tifxyz",
+  "hld_PHerc0813_t269_s015.tifxyz",
+  "hld_PHerc0813_t269_s026.tifxyz",
+  "hld_PHerc0813_t275_s043.tifxyz"
+ ],
+ "z_window": [
+  9020,
+  9980
+ ],
+ "arms": {
+  "A": {
+   "meshes": "C:/VesuviusTemp/band0813/out/2026-11-09_PHerc0813_slice-9000-10000_0-patch_selfR_s2/meshes/fitted_selfR_s2",
+   "windings": 120,
+   "within_2": 0.3154929577464789,
+   "within_4": 0.5704225352112676,
+   "within_2_patch_mean": 0.31082691616049185,
+   "within_4_patch_mean": 0.5711351282387985,
+   "winding_hops_total": 1025,
+   "patches_with_hops": 7,
+   "duplicate_sheet": {
+    "shared_share": 0.1948013745463932,
+    "area_cm2": 1195.7481997868476,
+    "windings": 120,
+    "nodes": 1849781,
+    "same_vx": 3.204443494979705,
+    "most_shared": [
+     [
+      "w011_selfR_s2",
+      0.822
+     ],
+     [
+      "w010_selfR_s2",
+      0.794
+     ],
+     [
+      "w012_selfR_s2",
+      0.763
+     ],
+     [
+      "w013_selfR_s2",
+      0.685
+     ],
+     [
+      "w014_selfR_s2",
+      0.588
+     ],
+     [
+      "w015_selfR_s2",
+      0.48
+     ],
+     [
+      "w016_selfR_s2",
+      0.404
+     ],
+     [
+      "w017_selfR_s2",
+      0.367
+     ],
+     [
+      "w018_selfR_s2",
+      0.328
+     ],
+     [
+      "w051_selfR_s2",
+      0.324
+     ]
+    ]
+   },
+   "per_patch": {
+    "hld_PHerc0813_t269_s001.tifxyz": {
+     "nodes": 774,
+     "within_2": 292,
+     "within_4": 480,
+     "winding_hops": 177,
+     "distinct_windings": 6,
+     "modal_winding": 41,
+     "modal_share": 0.5417,
+     "median_dist_matched": 1.563982419784196,
+     "quads_over_radius_cap": 124334
+    },
+    "hld_PHerc0813_t269_s002.tifxyz": {
+     "nodes": 448,
+     "within_2": 173,
+     "within_4": 314,
+     "winding_hops": 113,
+     "distinct_windings": 9,
+     "modal_winding": 37,
+     "modal_share": 0.3726,
+     "median_dist_matched": 1.8253793842838144,
+     "quads_over_radius_cap": 124334
+    },
+    "hld_PHerc0813_t269_s010.tifxyz": {
+     "nodes": 1249,
+     "within_2": 565,
+     "within_4": 852,
+     "winding_hops": 531,
+     "distinct_windings": 14,
+     "modal_winding": 47,
+     "modal_share": 0.1819,
+     "median_dist_matched": 1.3667346173959225,
+     "quads_over_radius_cap": 124334
+    },
+    "hld_PHerc0813_t269_s012.tifxyz": {
+     "nodes": 847,
+     "within_2": 205,
+     "within_4": 436,
+     "winding_hops": 72,
+     "distinct_windings": 9,
+     "modal_winding": 69,
+     "modal_share": 0.156,
+     "median_dist_matched": 2.1216626471382485,
+     "quads_over_radius_cap": 124334
+    },
+    "hld_PHerc0813_t269_s015.tifxyz": {
+     "nodes": 1861,
+     "within_2": 513,
+     "within_4": 989,
+     "winding_hops": 88,
+     "distinct_windings": 3,
+     "modal_winding": 60,
+     "modal_share": 0.7442,
+     "median_dist_matched": 1.9061328623620875,
+     "quads_over_radius_cap": 124334
+    },
+    "hld_PHerc0813_t269_s026.tifxyz": {
+     "nodes": 624,
+     "within_2": 141,
+     "within_4": 290,
+     "winding_hops": 27,
+     "distinct_windings": 3,
+     "modal_winding": 58,
+     "modal_share": 0.4897,
+     "median_dist_matched": 2.147417259137659,
+     "quads_over_radius_cap": 124334
+    },
+    "hld_PHerc0813_t275_s043.tifxyz": {
+     "nodes": 587,
+     "within_2": 127,
+     "within_4": 284,
+     "winding_hops": 17,
+     "distinct_windings": 5,
+     "modal_winding": 63,
+     "modal_share": 0.3099,
+     "median_dist_matched": 2.1648003298281138,
+     "quads_over_radius_cap": 124334
+    }
+   }
+  },
+  "B": {
+   "meshes": "C:/VesuviusTemp/band0813/out/2026-11-09_PHerc0813_slice-9000-10000_0-patch_selfS_s2/meshes/fitted_selfS_s2",
+   "windings": 120,
+   "within_2": 0.34960876369327076,
+   "within_4": 0.6014084507042253,
+   "within_2_patch_mean": 0.34286624615849337,
+   "within_4_patch_mean": 0.6051724905876342,
+   "winding_hops_total": 1102,
+   "patches_with_hops": 7,
+   "duplicate_sheet": {
+    "shared_share": 0.210387023708399,
+    "area_cm2": 1193.4287549356395,
+    "windings": 120,
+    "nodes": 1868388,
+    "same_vx": 3.204443494979705,
+    "most_shared": [
+     [
+      "w011_selfS_s2",
+      0.86
+     ],
+     [
+      "w010_selfS_s2",
+      0.837
+     ],
+     [
+      "w012_selfS_s2",
+      0.823
+     ],
+     [
+      "w013_selfS_s2",
+      0.784
+     ],
+     [
+      "w014_selfS_s2",
+      0.725
+     ],
+     [
+      "w015_selfS_s2",
+      0.636
+     ],
+     [
+      "w016_selfS_s2",
+      0.529
+     ],
+     [
+      "w017_selfS_s2",
+      0.444
+     ],
+     [
+      "w018_selfS_s2",
+      0.394
+     ],
+     [
+      "w019_selfS_s2",
+      0.347
+     ]
+    ]
+   },
+   "per_patch": {
+    "hld_PHerc0813_t269_s001.tifxyz": {
+     "nodes": 774,
+     "within_2": 405,
+     "within_4": 624,
+     "winding_hops": 204,
+     "distinct_windings": 7,
+     "modal_winding": 42,
+     "modal_share": 0.5561,
+     "median_dist_matched": 1.4454311730209142,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s002.tifxyz": {
+     "nodes": 448,
+     "within_2": 167,
+     "within_4": 302,
+     "winding_hops": 130,
+     "distinct_windings": 8,
+     "modal_winding": 38,
+     "modal_share": 0.3477,
+     "median_dist_matched": 1.8324343164354413,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s010.tifxyz": {
+     "nodes": 1249,
+     "within_2": 611,
+     "within_4": 890,
+     "winding_hops": 569,
+     "distinct_windings": 13,
+     "modal_winding": 48,
+     "modal_share": 0.2022,
+     "median_dist_matched": 1.3362732953732532,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s012.tifxyz": {
+     "nodes": 847,
+     "within_2": 221,
+     "within_4": 425,
+     "winding_hops": 85,
+     "distinct_windings": 11,
+     "modal_winding": 63,
+     "modal_share": 0.1294,
+     "median_dist_matched": 1.8507971360075244,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s015.tifxyz": {
+     "nodes": 1861,
+     "within_2": 556,
+     "within_4": 995,
+     "winding_hops": 72,
+     "distinct_windings": 4,
+     "modal_winding": 60,
+     "modal_share": 0.8302,
+     "median_dist_matched": 1.7264469088905676,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t269_s026.tifxyz": {
+     "nodes": 624,
+     "within_2": 115,
+     "within_4": 269,
+     "winding_hops": 24,
+     "distinct_windings": 4,
+     "modal_winding": 59,
+     "modal_share": 0.5762,
+     "median_dist_matched": 2.3778587286413333,
+     "quads_over_radius_cap": 123479
+    },
+    "hld_PHerc0813_t275_s043.tifxyz": {
+     "nodes": 587,
+     "within_2": 159,
+     "within_4": 338,
+     "winding_hops": 18,
+     "distinct_windings": 6,
+     "modal_winding": 64,
+     "modal_share": 0.2604,
+     "median_dist_matched": 2.0770769394799333,
+     "quads_over_radius_cap": 123479
+    }
+   }
+  }
+ },
+ "B_minus_A": {
+  "within_2": {
+   "point": 0.034115805946791866,
+   "ci95": [
+    0.003322371443371707,
+    0.07361376673040154
+   ],
+   "boot": 10000,
+   "seed": 12345,
+   "patches": 7
+  },
+  "within_4": {
+   "point": 0.030985915492957705,
+   "ci95": [
+    -0.006804733727810652,
+    0.08948723025143535
+   ],
+   "boot": 10000,
+   "seed": 12345,
+   "patches": 7
+  },
+  "duplicate_sheet_share_B_minus_A": 0.015585649162005805,
+  "GO": false,
+  "go_rule": "B-A within_2 >= +5 points, its 95% CI above 0, and duplicate-sheet share B-A <= +2 points"
+ }
+}
