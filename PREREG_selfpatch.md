@@ -103,3 +103,19 @@ An invalid run is re-run once with the same settings.
 
 Code, configs, this file, the selector summaries (tile counts, ids, node counts, z ranges) and the scores. The
 self-patch and random tiles are 0813 surface geometry and stay local, like the fitted meshes of the A/B.
+
+## Amendment 1 (9 Nov 2026, 01:45 local, before any S or R fit step)
+
+The first launch of S seed 1 never started. `fit_band0813.ps1` hung in Windows PowerShell start-up, at 0.2 s CPU after
+5 minutes, with no fit log, beside dozens of other hung PowerShell processes on this PC. I killed it, and none of its
+fit steps ran. The launcher is now `fit_band0813.py`, a line-for-line Python port: same environment variables, same
+`make_overrides.py` validation, same fitter call, manifest, checkpoint clean-up and `.done` file. The GPU watch is now
+`tools/gpu_watch.py` (nvidia-smi and typeperf), with the same output. The arm S overrides it builds differ from arm B's
+24 Oct manifest only in `patch_uuid_filter_regex` (`^slf_` against `^trn_`).
+
+Two more harness changes:
+
+- The job takes a run-once lock, because the same jobs sit both in the GPU queue and in a detached chain
+  (`run_selfpatch_chain.sh`). The chain runs beside the First Letters queue job: about 5 GB for the fit plus 3 GB,
+  well under the 20 GB cap.
+- `score_selfpatch.sh` runs `score_ab.py` unchanged. Arms, patch sets, selector, metrics and bar are unchanged.

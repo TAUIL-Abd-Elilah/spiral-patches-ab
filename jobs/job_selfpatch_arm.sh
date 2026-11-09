@@ -5,35 +5,34 @@
 # job_patches_ab_smoke.sh. Tags: patch<arm> (seed 1) or patch<arm>_s<seed>. ~3.2 h fit + ~10 min eval.
 set -u
 ARM=$1; SEED=${2:-1}
-R=C:/VesuviusTemp/band0813; L=$R/logs; PS1W=$(cygpath -w $R/fit_band0813.ps1)
+R=C:/VesuviusTemp/band0813; L=$R/logs; PY=C:/Users/PC/miniconda3/envs/vesuvius/python.exe
 case $ARM in S|R) ;; *) echo "arm must be S or R"; exit 2;; esac
 TAG=self$ARM; [ "$SEED" = 1 ] || TAG=self${ARM}_s$SEED
 SET=""; [ "$SEED" = 1 ] || SET="optimizer_random_seed=$SEED"
+# Run once: the same job may be both in the GPU queue and in the detached chain (run_selfpatch_chain.sh); the second
+# copy skips if the first holds the lock or already finished.
+LOCK=$L/selfjob_$TAG.lock
+if [ -f $LOCK ] || grep -q "rc=0" $L/fit_${TAG}_eval.done 2>/dev/null; then echo "SKIP $TAG: already running or done"; exit 0; fi
+echo "$(date +%F_%T) $$" > $LOCK
 [ -f $L/smoke.ok ] || { echo "no logs/smoke.ok: run job_patches_ab_smoke.sh first (or it failed)"; exit 1; }
 # Data is back on C: since 25 Oct (it sat on D: 23-25 Oct).
 avail_gb() { df -BG --output=avail /c | tail -1 | tr -dc 0-9; }
 c_gb() { df -BG --output=avail /c | tail -1 | tr -dc 0-9; }
 [ "$(c_gb)" -ge 3 ] || { echo "C: has $(c_gb) GB free; need >= 3"; exit 1; }
 [ "$(avail_gb)" -ge 10 ] || { echo "C: has $(avail_gb) GB free; need >= 10 (8 GB floor + ~1.6 GB fit peak)"; exit 1; }
-fit() { local tag=$1; shift; powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$PS1W" -Tag $tag "$@" > $L/ps1_$tag.out 2>&1; }
+fit() { local tag=$1; shift; "$PY" -u $R/fit_band0813.py --tag $tag "$@" > $L/ps1_$tag.out 2>&1; }   # amendment 1: Python launcher
 run_dir() { sed -n 2p $L/fit_$1.done 2>/dev/null | tr -d '\r'; }
 rc_of() { sed -n 1p $L/fit_$1.done 2>/dev/null | tr -d '\r' | sed 's/.*rc=//'; }
-gpu_watch() {
-  while true; do
-    ded=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits | head -1 | tr -d ' \r')
-    sh=$(powershell -NoProfile -Command "\$p=(Get-CimInstance Win32_Process -Filter \"Name='python.exe'\" | Where-Object { \$_.CommandLine -match 'fit_spiral' -and \$_.CommandLine -match 'band0813' }).ProcessId | Select-Object -First 1; if (\$p) { \$s=(Get-Counter \"\GPU Process Memory(pid_\${p}_*)\Shared Usage\" -ErrorAction SilentlyContinue).CounterSamples | Measure-Object CookedValue -Sum; [int](\$s.Sum/1MB) } else { -1 }" | tr -d '\r')
-    echo "$(date +%H:%M:%S) dedicated_MiB $ded shared_MB $sh"; sleep 120
-  done
-}
+gpu_watch() { "$PY" -u $R/tools/gpu_watch.py; }   # amendment 1: nvidia-smi + typeperf, no PowerShell
 gpu_watch > $L/gpu_$TAG.log 2>&1 & WATCH=$!
 
 echo "$(date +%H:%M) fit $TAG (arm $ARM, seed $SEED)"
-fit $TAG -Arm $ARM -Mode train -Steps 20000 -MemFraction 0.78 -CkptEvery 2000 -Set "$SET"
+fit $TAG --arm $ARM --mode train --steps 20000 --mem-fraction 0.78 --ckpt-every 2000 --set "$SET"
 ck="$(run_dir $TAG)/checkpoint_fitted.ckpt"
 echo "$(date +%H:%M) fit rc=$(rc_of $TAG) -> $(run_dir $TAG)"
 if [ "$(rc_of $TAG)" = 0 ] && [ -f "$ck" ]; then
   echo "$(date +%H:%M) eval ${TAG}_eval from $ck"
-  fit ${TAG}_eval -Arm $ARM -Mode eval -Steps 20000 -MemFraction 0.78 -ResumePath "$ck" -Set "$SET"
+  fit ${TAG}_eval --arm $ARM --mode eval --steps 20000 --mem-fraction 0.78 --resume-path "$ck" --set "$SET"
 fi
 kill $WATCH 2>/dev/null
 
