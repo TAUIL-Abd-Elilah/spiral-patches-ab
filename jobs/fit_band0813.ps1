@@ -7,7 +7,7 @@
 #          patches, skip the mesh export, and let the fitter write satisfied_fitted.json for them.
 # usage: .\fit_band0813.ps1 -Arm A|B -Mode train|eval -Steps 20000 -Tag patchA [-ResumePath <ckpt>] [-Set 'key=json;key=json']
 #        (-Set is one ';'-separated string: powershell -File does not split arrays; -DryRun stops before the fit)
-param([ValidateSet('A', 'B')][string]$Arm, [ValidateSet('train', 'eval')][string]$Mode = 'train', [int]$Steps = 20000,
+param([ValidateSet('A', 'B', 'S', 'R')][string]$Arm, [ValidateSet('train', 'eval')][string]$Mode = 'train', [int]$Steps = 20000,
       [string]$Tag, [double]$MemFraction = 0.78, [int]$CkptEvery = 2000, [string]$ResumePath = '', [string]$Set = '',
       [switch]$DryRun)
 $ErrorActionPreference = 'Stop'

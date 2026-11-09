@@ -13,6 +13,11 @@ each held-out patch touches 3 to 13 different fitted windings. The pre-registere
 size (+3.1 points, 95 % CI -0.3 to +6.2); the decision stays with seed 1. [PREREG.md](PREREG.md) (amendment 1, after the smoke test and
 before the fits, relaxed one validity check).
 
+**Follow-up (9 Nov 2026, pre-registered, running):** can the fit's *own* good regions serve as the patches?
+[PREREG_selfpatch.md](PREREG_selfpatch.md) cuts tiles where two seeds of the tracks-only fit agree on the same winding
+and no second winding stacks on the sheet (`tools/self_patches.py`, no human patch read), refits with them (arm S), and
+compares against tracks only (A) and the same number of random tiles from the same fit (R).
+
 ## Seed 2 (26 October 2026): same sign, same size
 
 The pre-registered second seed (both arms, `optimizer_random_seed` 2, everything else identical; both runs valid)
